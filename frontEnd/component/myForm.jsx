@@ -1,6 +1,5 @@
 import { useState } from "react";
 import React from 'react' ;
-
 import '../form.css'
 import Modal from "./Modal";
 import axios from "axios";
@@ -24,7 +23,7 @@ export default function MyForm() {
    setShowModel(true)
   }
   function handelCheckBox(event) {
-    setFormInputs({ ...formInputs, isStudent: event.target.checked });
+    setFormInputs({ ...formInputs, isemployee: event.target.checked });
   }
   function submitMessage (){
 
@@ -37,7 +36,7 @@ export default function MyForm() {
      setShowModel(true);
 });
   }
-  const btnDisabled =formInputs.name==""||formInputs.age<22||formInputs.email==""||formInputs.isStudent==false;
+  const btnDisabled =formInputs.name==""||formInputs.age<22||formInputs.email==""||formInputs.isemployee==false;
   return (
     <div className="flex "
     onClick={()=>{
