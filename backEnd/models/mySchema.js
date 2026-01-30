@@ -11,8 +11,18 @@ const users= new Schema({
     student:Boolean
     //types:String - Boolean - Number
 })
+const loanForm= new Schema({
+    name:String,
+    email: String,
+    phoneNumber:Number,
+    age:Number,
+    isemployee:Boolean,
+    salary:String,
+    //types:String - Boolean - Number
+})
 //model
  const mydata = mongoose.model('mtdataa',mySchema);
  const myUsers = mongoose.model('user',users);
+ const myloanForm = mongoose.model('loanForm',loanForm);
 //export
-module.exports =myUsers;
+module.exports =myloanForm;

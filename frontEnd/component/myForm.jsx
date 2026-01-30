@@ -1,6 +1,9 @@
 import { useState } from "react";
+import React from 'react' ;
+
 import '../form.css'
 import Modal from "./Modal";
+import axios from "axios";
 export default function MyForm() {
   const [errorMass,setErrorMass]=useState(null)
   const [ShowModal,setShowModel]=useState(false)
@@ -10,8 +13,7 @@ export default function MyForm() {
     phone: "",
     age: "",
     isStudent: false,
-    city : "",
-    type:""
+    salary : "",
   });
   function handelSubmit(event){
    event.preventDefault();
@@ -23,6 +25,18 @@ export default function MyForm() {
   }
   function handelCheckBox(event) {
     setFormInputs({ ...formInputs, isStudent: event.target.checked });
+  }
+  function submitMessage (){
+
+    axios.post('https://loanform-production.up.railway.app/addUser',{
+     formInputs
+    })
+    .then(() => {
+     setShowModel(true)
+    }).catch((err) => {
+     setErrorMass (err) ;
+     setShowModel(true);
+});
   }
   const btnDisabled =formInputs.name==""||formInputs.age<22||formInputs.email==""||formInputs.isStudent==false;
   return (
@@ -86,7 +100,7 @@ export default function MyForm() {
       <label>Salary</label>
       <select
       value={formInputs.city}
-      onChange={(e)=>{setFormInputs({...formInputs,city:e.target.value})}}>
+      onChange={(e)=>{setFormInputs({...formInputs,salary:e.target.value})}}>
         <option>Less Than 2000</option>
         <option>between 2000 and 5000</option>
         <option>more than 5000</option>
@@ -94,11 +108,11 @@ export default function MyForm() {
      <hr />
       <button 
       className={btnDisabled ? "disabled" : ""}
-      onClick={handelSubmit}
+      onClick={submitMessage}
       disabled={ btnDisabled }
       >Submit</button>
     </form>
-    <Modal errorMassage={errorMass} isVisable={ShowModal} />
+    <Modal errorMassage={errorMass?.toString()} isVisable={ShowModal} />
     </div>
   );
 }

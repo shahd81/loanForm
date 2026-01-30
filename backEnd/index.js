@@ -7,6 +7,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 //imp to convert any json to js json for body is not define
 app.use(express.json());
+//to use it infront
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'http://localhost:5173', // frontend run on it 
+  methods: ['GET','POST','DELETE','PUT'],
+}));
 
 //to use form method  "post" in html code 
 app.use(express.urlencoded({ extended: true }));
@@ -22,14 +29,14 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("MongoDB connected successfully");
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    }); 
+   
   }) 
   .catch((err) => {
     console.error("Error connecting to MongoDB:", err);
   });
-
+ app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    }); 
 app.get("/sum/:n1/:n2", (req, res) => {
   const total = Number(req.params.n1) + Number(req.params.n2);
   res.json({ total });
@@ -70,7 +77,10 @@ app.post("/addUser", async(req, res) => {
 
   const name= req.body.name;
   const age= req.body.age;
-  const student= req.body.student;
+  const employee= req.body.employee;
+  const email= req.body.email;
+  const phoneNumber= req.body.phoneNumber;
+  const salary= req.body.salary;
   try {
       const Mydata =new  mydata(req.body);
   users.userName =name;
@@ -91,12 +101,11 @@ app.get("/p", (req, res) => {
   mydata.find().then((result) => {
     console.log(result);
   res.render("home",{mytitle:"shahd" ,arr :result})
-   
   }).catch((err) => {
     console.log(err);
   }
   );
-});
+});  
 app.get("/getbyId/:userId",async (req, res) => {
   // res.sendFile("views/home.html", { root: __dirname });
 

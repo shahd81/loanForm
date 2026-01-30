@@ -1,4 +1,5 @@
 import PropTypes from "prop-types"
+import React from 'react' ;
 export default function Modal({ isVisable ,errorMassage=null}) {
       if (!isVisable) return null;
      if(isVisable){
