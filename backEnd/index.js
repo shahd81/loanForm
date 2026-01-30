@@ -42,13 +42,13 @@ app.get("/sum/:n1/:n2", (req, res) => {
   res.json({ total });
 });
 
-app.post("/", (req, res) => {
-  // res.send("test");
-  console.log(req.body);
-  const Mydata =new  mydata(req.body);
-  Mydata.save();
-  res.redirect('/done');
-});
+// app.post("/", (req, res) => {
+//   // res.send("test");
+//   console.log(req.body);
+//   const Mydata =new  mydata(req.body);
+//   Mydata.save();
+//   res.redirect('/done');
+// });
 app.delete("/deletedbyId/:userId",async (req, res) => {
   const id = req.params.userId;
     console.log(id);
@@ -73,23 +73,17 @@ app.delete("/deletedbyId/:userId",async (req, res) => {
   } 
  });
 app.post("/addUser", async(req, res) => {
-  const users =new mydata();
 
-  const name= req.body.name;
-  const age= req.body.age;
-  const employee= req.body.employee;
-  const email= req.body.email;
-  const phoneNumber= req.body.phoneNumber;
-  const salary= req.body.salary;
   try {
-      const Mydata =new  mydata(req.body);
-  users.userName =name;
-  users.age=age;
-  users.student=student
-   await Mydata.save();
-  res.redirect('/done');
+      const Myuser =new  mydata(req.body);
+      await Myuser.save();
+  res.status(201).json({
+    message :"the Form Has Submitted successfuly"
+  })
   } catch (err) {
-    console.log(err);
+    res.status(404).json({
+    message :err
+  })
   }
   // res.send("test");
   console.log(req.body);
