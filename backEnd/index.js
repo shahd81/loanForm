@@ -3,7 +3,6 @@ const express = require("express");
 const mongoose = require("mongoose");  
 //use  the model to coneect the schemaed
 const mydata = require('./models/mySchema');
-const { resolveEnvPrefix } = require("vite");
 const app = express();
 const port = process.env.PORT || 3000;
 //imp to convert any json to js json for body is not define
