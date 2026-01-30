@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "ejs": "^4.0.1",
+    "mongose": "^0.0.2-security"
+  }
+}

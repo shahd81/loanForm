@@ -1,0 +1,61 @@
+.flex{
+   display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.main{
+     display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+hr{
+    width: 100%;
+}
+.label{
+    align-items: stretch;
+}
+#loanForm {
+  width: 60%;
+  background-color: rgb(51, 0, 170 );
+    border-radius: 20px  ;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0,0.4);
+   color:white;
+   padding:10px;
+   border: none;
+}
+input,select{
+    width: 100%;
+    border: none;
+    height: 25px;
+}
+label{
+margin: 5px ;}
+.disabled{
+    background: gray;
+}
+button{
+    border-radius: 5px;
+    color: aliceblue;
+    font-size: 20px;
+    background: rgb(211, 0, 127);
+    border: none;
+}
+.modal{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+      justify-content: center;
+  align-items: center;
+     display: flex;
+
+}
+.modal-content{
+      background-color: aliceblue;
+      color: green;
+      width: 90%;
+
+   justify-content: center;
+  align-items: center;
+ display: flex;
+}
