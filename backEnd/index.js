@@ -1,20 +1,20 @@
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");  
-//use  the model to coneect the schemaed
-const mydata = require('./models/mySchema');
-const app = express();
-const port = process.env.PORT || 3000;
-//imp to convert any json to js json for body is not define
-app.use(express.json());
 //to use it infront
-const cors = require('cors');
+const cors = require("cors");
+const mongoose = require("mongoose");  
 
+const app = express();
 app.use(cors({
   origin: 'http://localhost:5173', // frontend run on it 
   methods: ['GET','POST','DELETE','PUT'],
+   credentials: true,
 }));
-
+//use  the model to coneect the schemaed
+const mydata = require('./models/mySchema');
+const port = process.env.PORT || 3000;
+//imp to convert any json to js json for body is not define
+app.use(express.json());
 //to use form method  "post" in html code 
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine",'ejs');
