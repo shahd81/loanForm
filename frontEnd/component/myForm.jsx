@@ -12,7 +12,7 @@ export default function MyForm() {
     email: "",
     phone: "",
     age: "",
-    isStudent: false,
+    isemployee: false,
     salary : "",
   });
   function handelSubmit(event){
@@ -28,9 +28,8 @@ export default function MyForm() {
   }
   function submitMessage (){
 
-    axios.post('https://loanform-production.up.railway.app/addUser',{
-     formInputs
-    })
+    axios.post('https://loanform-production.up.railway.app/addUser',
+     formInputs)
     .then(() => {
      setShowModel(true)
     }).catch((err) => {
@@ -93,13 +92,13 @@ export default function MyForm() {
       <label>Are You employee ?</label>
       <input
         type="checkbox"
-        checked={formInputs.isStudent}
+        checked={formInputs.isemployee}
         onChange={handelCheckBox}
       />
       <hr></hr>
       <label>Salary</label>
       <select
-      value={formInputs.city}
+      value={formInputs.salary}
       onChange={(e)=>{setFormInputs({...formInputs,salary:e.target.value})}}>
         <option>Less Than 2000</option>
         <option>between 2000 and 5000</option>

@@ -14,7 +14,7 @@ const users= new Schema({
 const loanForm= new Schema({
     name:String,
     email: String,
-    phoneNumber:Number,
+    phone:Number,
     age:Number,
     isemployee:Boolean,
     salary:String,
